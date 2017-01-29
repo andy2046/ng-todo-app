@@ -1,0 +1,60 @@
+<div>
+
+<div class="card big">
+
+<form name="cardForm" onsubmit="" novalidate>
+
+<div class="input-group">
+<span class="input-group-addon" id="title-span">Title</span>
+<input type="text" id="title" name="title" ng-model="ctrl.draftCard.title" ng-maxlength="20" ng-pattern="/^\w+( \w+)*$/" class="form-control" aria-describedby="title-span" placeholder="Title" autofocus required >
+<div ng-messages="cardForm.title.$error" ng-show="cardForm.title.$touched || cardForm.title.$dirty">
+	<div class="err" ng-message="required">You forgot to enter Title...</div>
+	<div class="err" ng-message="pattern">Title should contain only letters or number...</div> 
+	<div class="err" ng-message="maxlength">Title is too long (Max length is 20)...</div>
+	</div>
+</div>
+
+<br />
+
+<div class="input-group">
+<span class="input-group-addon" id="description-span">Description</span>
+<textarea rows="1" id="description" name="description" ng-model="ctrl.draftCard.description" ng-maxlength="150" class="form-control" aria-describedby="description-span" placeholder="Description" required></textarea>
+<div ng-messages="cardForm.description.$error" ng-show="cardForm.description.$touched || cardForm.description.$dirty">
+	<div class="err" ng-message="required">You forgot to enter Description...</div>
+	<div class="err" ng-message="maxlength">Description is too long (Max length is 150)...</div>
+	</div>
+</div>
+
+<br />
+
+<div class="input-group">
+<span class="input-group-addon" id="status-span">Status</span>
+<select id="status" class="form-control" aria-describedby="status-span" ng-model="ctrl.draftCard.status">
+<option value="todo">To Do</option>
+<option value="in-progress">In Progress</option>
+<option value="done">Done</option>
+</select>
+</div>
+
+<br />
+
+<div class="input-group">
+<span class="input-group-addon" id="color-span">Color</span>
+<input id="color" class="form-control" aria-describedby="color-span" type="color" ng-model="ctrl.draftCard.color" defaultValue="#ff0000">
+</div>
+
+<br />
+
+<div class="actions">
+<button type="submit" ng-click="ctrl.cancel()" class="btn btn-success">Cancel</button>
+<button type="submit" ng-click="ctrl.upsertCard()" ng-disabled="cardForm.$invalid" class="btn btn-success"><span ng-bind="ctrl.buttonLabel"></span></button>
+</div>
+
+</form>
+
+</div>
+
+<div class="overlay" ng-click="ctrl.cancel()">
+</div>
+
+</div>
