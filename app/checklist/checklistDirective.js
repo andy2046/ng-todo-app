@@ -2,7 +2,7 @@
 export default class checklistDirective {
     constructor() {
 			
-        this.template = '<div class="checklist"> <ul> <li class="checklist__task" ng-repeat="task in ctrl.tasks"> <input type="checkbox" ng-model="task.done" ng-checked="task.done" /> <span ng-bind="task.name"></span> <a title="remove" href="#" class="checklist__task--remove" ng-click="ctrl._deleteTask(ctrl.cardId,task.id,$index)"> </a> </li> </ul> <input type="text" class="checklist--add-task"	placeholder="Type then hit Enter to add a task" ng-keypress="ctrl._addTask(ctrl.cardId,$event)" /></div>';
+        this.template = '<div class="checklist"> <ul> <li class="checklist__task" ng-repeat="task in ctrl.tasks"> <input type="checkbox" ng-model="task.done" ng-checked="task.done" /> <span ng-bind="task.name" ng-if="!task.done"></span> <strike ng-if="task.done"><span ng-bind="task.name"></span></strike> <a title="remove" href="#" class="checklist__task--remove" ng-click="ctrl._deleteTask(ctrl.cardId,task.id,$index)"> </a> </li> </ul> <input type="text" class="checklist--add-task"	placeholder="Type then hit Enter to add a task" ng-keypress="ctrl._addTask(ctrl.cardId,$event)" /></div>';
         this.restrict = 'EA';
         this.scope = {
 			cardId: '=',
