@@ -1,7 +1,7 @@
 {
-  "name": "ng-list-app",
+  "name": "ng-todo-app",
   "version": "0.0.1",
-  "description": "ng list application",
+  "description": "ng todo application",
   "author": "Andy",
   "license": "ISC",
   "scripts": {
